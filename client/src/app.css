@@ -1,0 +1,12 @@
+.app {
+  display: flex;
+  /* gap: 20px; */
+  width: 100%;
+}
+
+.content {
+  flex: 1;
+  margin-right: 15px;
+  /* background-color: aqua; */
+  margin-left: 15px;
+}

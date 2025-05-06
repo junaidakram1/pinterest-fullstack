@@ -1,0 +1,25 @@
+.searchBar {
+  /* margin-left: 200px; */
+  margin: 16px 0px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.left {
+  flex: 1;
+  background-color: #f1f1f1;
+  border-radius: 13px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.left input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
