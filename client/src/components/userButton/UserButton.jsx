@@ -1,18 +1,19 @@
 import React from "react";
 import "./userButton.css";
 import { useState } from "react";
+import Image from "../Image/Image";
 
 const UserButton = () => {
   const [open, setOpen] = useState(false);
   const currentUser = true;
   return currentUser ? (
     <div className="userButton">
-      <img src="/general/noAvatar.png" alt="avatar" />
+      <Image path="/general/noAvatar.png" alt="profile" />
       <div className="arrow-container">
-        <img
+        <Image
           onClick={() => setOpen((prev) => !prev)}
-          src="/general/arrow.svg"
-          alt="dropdown"
+          path="/general/arrow.svg"
+          alt="arrow"
           className="arrow"
         />
       </div>

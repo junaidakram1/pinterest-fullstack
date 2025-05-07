@@ -1,12 +1,13 @@
 import React from "react";
 import "./searchBar.css";
 import UserButton from "../userButton/UserButton";
+import Image from "../Image/Image";
 
 const searchBar = () => {
   return (
     <div className="searchBar">
       <div className="left">
-        <img src="/general/search.svg" alt="search-input" />
+        <Image path="/general/search.svg" alt="search-input" />
         <input type="text" placeholder="Search" />
       </div>
       <div className="right">
