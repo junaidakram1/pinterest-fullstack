@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./userButton.css";
 import { useState } from "react";
 import Image from "../Image/Image";
+import useOutsideClick from "../../hooks/outsideClick";
 
 const UserButton = () => {
   const [open, setOpen] = useState(false);
+  const outsideRef = useRef();
+  useOutsideClick(outsideRef, () => setOpen(false));
+
   const currentUser = true;
   return currentUser ? (
-    <div className="userButton">
+    <div className="userButton" ref={outsideRef}>
       <Image path="/general/noAvatar.png" alt="profile" />
       <div className="arrow-container">
         <Image

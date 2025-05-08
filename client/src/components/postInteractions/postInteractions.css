@@ -1,0 +1,60 @@
+.postInteractions {
+  display: flex;
+  gap: 180px;
+  /* align-items: center; */
+  /* overflow: hidden; */
+}
+.postInteractions .left {
+  justify-content: start;
+  gap: 25px;
+}
+.postInteractions .left img {
+  width: 25px;
+  height: 25px;
+}
+
+.saveButtonPost {
+  display: block;
+  background-color: red;
+  color: rgb(255, 255, 255);
+  border-radius: 24px;
+  padding: 14px 18px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+}
+
+.saveButtonPost:hover {
+  background-color: darkred;
+}
+
+@media (max-width: 768px) {
+  .postInteractions {
+    /* gap: 20px; */
+    justify-content: start; /* flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: hidden; */
+    /* margin-top: 10px; */
+  }
+
+  .saveButtonPost {
+    display: none;
+  }
+
+  .postInteractions .left {
+    display: flex;
+    justify-content: center;
+    margin-right: 0px;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .postInteractions .left img {
+    width: 25px;
+    height: 25px;
+  }
+}
+/* .react:hover img {
+  color: darkred;
+} */

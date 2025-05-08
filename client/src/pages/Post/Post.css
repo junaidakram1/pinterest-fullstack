@@ -1,0 +1,84 @@
+.postPage {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 30px;
+  overflow: hidden;
+}
+
+.postContainer {
+  display: flex;
+  width: 70%;
+  max-height: 480px;
+  border: 1px solid rgba(0, 0, 0, 0.112);
+  border-radius: 16px;
+  overflow: hidden;
+  /* flex-wrap: wrap; */
+}
+
+.postImg {
+  flex: 1;
+}
+
+.postImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.postDetails {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 32px; */
+  padding: 16px;
+  /* padding-bottom: 90px; */
+  overflow: hidden;
+}
+
+.postUser {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 8px;
+  padding-top: 16px;
+  padding-bottom: 32px;
+}
+
+.postUser img {
+  width: 32px;
+  height: 32px;
+  border: 100%;
+}
+
+.postUser span {
+  font-size: 14px;
+}
+
+@media (max-width: 1123px) {
+  .postContainer {
+    margin-right: 16px;
+    width: 100%;
+    overflow-x: hidden;
+    /* flex-direction: column; */
+  }
+}
+
+@media (max-width: 900px) {
+  .postPage {
+    justify-content: none;
+    gap: 4px;
+  }
+  .postContainer {
+    flex-direction: column;
+    max-height: unset;
+  }
+
+  .postUser {
+    padding-top: 16px;
+    padding-bottom: 32px;
+  }
+}
