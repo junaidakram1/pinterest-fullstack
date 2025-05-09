@@ -1,31 +1,32 @@
 import React from "react";
 import "./sideBar.css";
+import { Link } from "react-router";
 import Image from "../image/image";
 
 const sideBar = () => {
   return (
     <div className="sideBar">
       <div className="top">
-        <a href="/" className="menuIcon">
+        <Link to="/" className="menuIcon">
           <Image path="/general/logo.png" alt="" className="logo" />
-        </a>
-        <a href="/" className="menuIcon">
+        </Link>
+        <Link to="/" className="menuIcon">
           <Image path="/general/home.svg" alt="" />
-        </a>
-        <a href="/create" className="menuIcon">
+        </Link>
+        <Link to="/create" className="menuIcon">
           <Image path="/general/create.svg" alt="" />
-        </a>
-        <a href="/" className="menuIcon">
+        </Link>
+        <Link to="/" className="menuIcon">
           <Image path="/general/updates.svg" alt="" />
-        </a>
-        <a href="/" className="menuIcon">
+        </Link>
+        <Link to="/" className="menuIcon">
           <Image path="/general/messages.svg" alt="" />
-        </a>
+        </Link>
       </div>
       <div className="bottom">
-        <a href="/" className="menuIcon">
+        <Link to="/" className="menuIcon">
           <Image path="/general/settings.svg" alt="" />
-        </a>
+        </Link>
       </div>
     </div>
   );
