@@ -1,12 +1,14 @@
-import React from "react";
-import Gallery from "../../components/gallery/Gallery.jsx";
+import { useSearchParams } from "react-router";
+import Gallery from "../../components/gallery/Gallery";
+import "./Search.css";
 
-const Search = () => {
-  return (
-    <div>
-      <Gallery />
-    </div>
-  );
+const SearchPage = () => {
+  let [searchParams] = useSearchParams();
+
+  const search = searchParams.get("search");
+  // const boardId = searchParams.get("boardId")
+
+  return <Gallery search={search} />;
 };
 
-export default Search;
+export default SearchPage;
