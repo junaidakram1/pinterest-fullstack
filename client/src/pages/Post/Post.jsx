@@ -2,7 +2,7 @@ import React from "react";
 import Image from "../../components/Image/Image.jsx";
 import PostInteractions from "../../components/postInteractions/PostInteractions.jsx";
 import { Link, useParams } from "react-router";
-import Comment from "../../components/comment/Comments.jsx";
+import Comments from "../../components/comment/Comments.jsx";
 import "./Post.css";
 import apiRequest from "../../utils/apiRequest.js";
 import { useQuery } from "@tanstack/react-query";
@@ -36,15 +36,15 @@ const Post = () => {
       </svg>
       <div className="postContainer">
         <div className="postImg">
-          <Image path={data.media} alt="" w={736} />
+          <Image src={data.media} alt="" w={736} />
         </div>
         <div className="postDetails">
           <PostInteractions />
           <Link to={`/${data.user.username}`} className="postUser">
-            <Image path={data.user.img || "/general/noAvatar.png"} />
+            <Image src={data.user.img || "/general/noAvatar.png"} />
             <span>{data.user.displayName}</span>
           </Link>
-          <Comment />
+          <Comments id={data._id} />
         </div>
       </div>
     </div>

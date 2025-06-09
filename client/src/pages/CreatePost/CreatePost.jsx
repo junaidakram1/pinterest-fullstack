@@ -1,7 +1,23 @@
 import React from "react";
 import "./createPost.css";
 import Image from "../../components/image/Image";
+import useAuthStore from "../../utils/authStore";
+import { useNavigate } from "react-router";
+import { useEffect, useRef, useState } from "react";
+import apiRequest from "../../utils/apiRequest";
+import { useMutation, useQuery } from "@tanstack/react-query";
+
 const CreatePost = () => {
+  const { currentUser } = useAuthStore();
+  const navigate = useNavigate();
+  const [file, setFile] = useState(null);
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/auth");
+    }
+  }, [navigate, currentUser]);
+
   return (
     <div className="createPage">
       <div className="createTop">
@@ -9,14 +25,20 @@ const CreatePost = () => {
         <button>Publish</button>
       </div>
       <div className="createBottom">
-        <div className="upload">
+        <label htmlFor="file" className="upload">
           <div className="uploadTitle">
             <Image path="/general/upload.svg" />
           </div>
           <div className="uploadInfo">
             We recommend using high quality .jpeg files in between 20-200 MB.
           </div>
-        </div>
+        </label>
+        <input
+          type="file"
+          id="file"
+          onChange={(e) => setFile(e.target.files[0])}
+          hidden
+        />
         <form className="createForm">
           <div className="createFormItem">
             <label htmlFor="Title">Title</label>

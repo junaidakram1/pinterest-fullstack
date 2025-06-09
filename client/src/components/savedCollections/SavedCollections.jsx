@@ -1,53 +1,42 @@
 import React from "react";
 import "./savedCollections.css";
 import Image from "../../components/image/Image.jsx";
-const SavedCollections = () => {
+import { useQuery } from "@tanstack/react-query";
+import apiRequest from "../../utils/apiRequest";
+import { Link } from "react-router";
+import { format } from "timeago.js";
+
+const SavedCollections = ({ userId }) => {
+  const { isPending, error, data } = useQuery({
+    queryKey: ["boards", userId],
+    queryFn: () => apiRequest.get(`/boards/${userId}`).then((res) => res.data),
+  });
+
+  if (isPending) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
+
+  console.log("savedCollection", data);
+
   return (
-    <div className="savedCollections">
-      <div className="collection">
-        <Image path="pins/pin2.jpeg" />
-        <div className="collectionInfo">
-          <h1>Cardistry</h1>
-          <span>12 Pins . 1w </span>
-        </div>
-      </div>
-      <div className="collection">
-        <Image path="pins/pin2.jpeg" />
-        <div className="collectionInfo">
-          <h1>Cardistry</h1>
-          <span>12 Pins . 1w </span>
-        </div>
-      </div>
-      <div className="collection">
-        <Image path="pins/pin2.jpeg" />
-        <div className="collectionInfo">
-          <h1>Cardistry</h1>
-          <span>12 Pins . 1w </span>
-        </div>
-      </div>
-      <div className="collection">
-        <Image path="pins/pin2.jpeg" />
-        <div className="collectionInfo">
-          <h1>Cardistry</h1>
-          <span>12 Pins . 1w </span>
-        </div>
-      </div>
-      <div className="collection">
-        <Image path="pins/pin2.jpeg" />
-        <div className="collectionInfo">
-          <h1>Cardistry</h1>
-          <span>12 Pins . 1w </span>
-        </div>
-      </div>
-      <div className="collection">
-        <Image path="pins/pin2.jpeg" />
-        <div className="collectionInfo">
-          <h1>Cardistry</h1>
-          <span>12 Pins . 1w </span>
-        </div>
-      </div>
+    <div className="collections">
+      {/* COLLECTION */}
+      {data?.map((board) => (
+        <Link
+          to={`/search?boardId=${board._id}`}
+          className="collection"
+          key={board._id}
+        >
+          <Image src={board.firstPin.media} alt="" />
+          <div className="collectionInfo">
+            <h1>{board.title}</h1>
+            <span>
+              {board.pinCount} Pins · {format(board.createdAt)}
+            </span>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
-
 export default SavedCollections;

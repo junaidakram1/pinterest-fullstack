@@ -1,9 +1,8 @@
 .profilePage {
   display: flex;
-  /* justify-content: center; */
-  align-items: center;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 16px;
 }
 
 .profileImg {
@@ -11,62 +10,64 @@
   object-fit: cover;
 }
 
-.profilePage .profileInteractions {
+.profileName {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.profileUsername {
+  font-weight: 300;
+  color: gray;
+}
+
+.followCounts {
+  font-weight: 500;
+}
+
+.profileInteractions {
   display: flex;
-  flex-direction: row;
+  align-items: center;
   gap: 32px;
 }
 
-.profileInteractions .profileButtons {
+.profileButtons {
   display: flex;
-  gap: 8px;
+  gap: 16px;
 }
 
-.profileButtons .messageBtn {
-  /* display: block; */
-  background-color: #e9e9e9;
-  color: black;
-  border-radius: 24px;
-  padding: 14px 18px;
-  font-weight: bolder;
-  font-size: 16px;
-  cursor: pointer;
-  width: max-content;
+.profileButtons button {
   border: none;
-}
-.profileButtons .saveBtn {
-  /* display: block; */
-  background-color: red;
-  color: white;
-  border-radius: 24px;
-  padding: 14px 18px;
+  padding: 16px;
+  border-radius: 32px;
   font-weight: bold;
-  font-size: 16px;
   cursor: pointer;
-  width: max-content;
-  border: none;
 }
 
-.profileButtons .saveBtn:hover {
-  background-color: darkred;
+.profileButtons button:last-child {
+  background-color: #e50829;
+  color: white;
 }
 
-.profileButtons .messageBtn:hover {
-  background-color: rgba(0, 0, 0, 0.123);
+.profileButtons button:last-child:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.profileButtons button:last-child:hover {
+  background-color: #c1011e;
 }
 
 .profileOptions {
   display: flex;
-  gap: 28px;
-  margin-top: 48px;
+  gap: 16px;
+  margin-top: 32px;
   margin-bottom: 16px;
-  cursor: pointer;
+  font-weight: 500;
 }
 
 .profileOptions span {
   cursor: pointer;
   padding: 8px 0px;
-  font-weight: 500;
 }
 
 .profileOptions span:hover {
@@ -75,15 +76,4 @@
 
 .active {
   border-bottom: 3px solid black;
-}
-
-.profileUsername {
-  color: #0000009a;
-  margin-top: 24px;
-  font-size: 14px;
-}
-
-.followCounts {
-  font-weight: 500;
-  margin-bottom: 8px;
 }

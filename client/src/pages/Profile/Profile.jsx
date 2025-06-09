@@ -4,9 +4,26 @@ import Image from "../../components/image/image";
 import { useState } from "react";
 import Gallery from "../../components/gallery/gallery";
 import SavedCollections from "../../components/savedCollections/SavedCollections";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router";
+import apiRequest from "../../utils/apiRequest.js";
+import FollowButton from "./FollowButton.jsx";
 
 const Profile = () => {
   const [type, setType] = useState("created");
+
+  const { username } = useParams();
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ["profile", username],
+    queryFn: () => apiRequest.get(`/users/${username}`).then((res) => res.data),
+  });
+
+  if (isPending) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
+
+  if (!data) return "User not found!";
   return (
     <div className="profilePage">
       {" "}
@@ -14,17 +31,23 @@ const Profile = () => {
         className="profileImg"
         w={100}
         h={100}
-        path={"/general/noAvatar.png"}
+        path={data.img || "/general/noAvatar.png"}
         alt=""
       />
-      <h1 className="profileName">Junidepp</h1>
-      <span className="profileUsername">@junidepp1234</span>
-      <div className="followCounts">50 followers · 23 followings</div>
+      <h1 className="profileName">{data.displayName}</h1>
+      <span className="profileUsername">@{data.username}</span>
+      <div className="followCounts">
+        {" "}
+        {data.followerCount} followers · {data.followingCount} followings
+      </div>
       <div className="profileInteractions">
         <Image path="/general/share.svg" alt="" />
         <div className="profileButtons">
           <button className="messageBtn">Message</button>
-          <button className="saveBtn">Follow</button>
+          <FollowButton
+            isFollowing={data.isFollowing}
+            username={data.username}
+          />{" "}
         </div>
         <Image path="/general/more.svg" alt="" />
       </div>
@@ -42,7 +65,11 @@ const Profile = () => {
           Saved
         </span>
       </div>
-      {type === "created" ? <Gallery /> : <SavedCollections />}
+      {type === "created" ? (
+        <Gallery userId={data._id} />
+      ) : (
+        <SavedCollections userId={data._id} />
+      )}
     </div>
   );
 };
