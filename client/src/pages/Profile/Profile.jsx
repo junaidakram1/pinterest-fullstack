@@ -8,11 +8,14 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import apiRequest from "../../utils/apiRequest.js";
 import FollowButton from "./FollowButton.jsx";
+import authStore from "../../utils/authStore";
 
 const Profile = () => {
   const [type, setType] = useState("created");
 
   const { username } = useParams();
+
+  const currentUser = authStore((state) => state.currentUser);
 
   const { isPending, error, data } = useQuery({
     queryKey: ["profile", username],
@@ -44,10 +47,12 @@ const Profile = () => {
         <Image path="/general/share.svg" alt="" />
         <div className="profileButtons">
           <button className="messageBtn">Message</button>
-          <FollowButton
-            isFollowing={data.isFollowing}
-            username={data.username}
-          />{" "}
+          {currentUser._id !== data._id && (
+            <FollowButton
+              isFollowing={data.isFollowing}
+              username={data.username}
+            />
+          )}
         </div>
         <Image path="/general/more.svg" alt="" />
       </div>
@@ -66,7 +71,9 @@ const Profile = () => {
         </span>
       </div>
       {type === "created" ? (
-        <Gallery userId={data._id} />
+        <div className="galleryWrapper">
+          <Gallery userId={data._id} />
+        </div>
       ) : (
         <SavedCollections userId={data._id} />
       )}

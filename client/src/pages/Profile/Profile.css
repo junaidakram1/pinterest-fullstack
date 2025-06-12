@@ -5,6 +5,11 @@
   gap: 16px;
 }
 
+.galleryWrapper {
+  width: 100%;
+  padding: 16px;
+}
+
 .profileImg {
   border-radius: 50%;
   object-fit: cover;

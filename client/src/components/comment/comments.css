@@ -1,12 +1,12 @@
 .comments {
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 16px;
-  min-height: 0;
+  width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  min-height: 0;
   overflow: hidden;
+  height: 100%;
 }
 
 .commentList {
@@ -15,6 +15,7 @@
   flex-direction: column;
   gap: 16px;
   overflow-y: auto;
+  width: 100%;
 }
 
 .commentForm {
@@ -24,6 +25,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  width: 100%;
 }
 
 .commentForm input {
@@ -32,11 +34,13 @@
   outline: none;
   background-color: transparent;
   font-size: 16px;
+  width: 100%;
 }
 
 .comment {
   display: flex;
   gap: 16px;
+  width: 100%;
 }
 
 .comment img {
@@ -50,7 +54,9 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex: 1;
 }
+
 .commentUsername {
   font-weight: 500;
   font-size: 14px;

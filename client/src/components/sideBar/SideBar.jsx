@@ -8,7 +8,7 @@ const sideBar = () => {
     <div className="sideBar">
       <div className="top">
         <Link to="/" className="menuIcon">
-          <Image path="/general/logo.png" alt="" className="logo" />
+          <Image path="/general/JunLogo.png" alt="" className="logo" />
         </Link>
         <Link to="/" className="menuIcon">
           <Image path="/general/home.svg" alt="" />
