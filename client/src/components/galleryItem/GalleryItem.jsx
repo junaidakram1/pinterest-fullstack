@@ -16,7 +16,7 @@ const GalleryItem = ({ item }) => {
         path={item.media}
       />  TESTING */}
 
-      <Image src={item.media} w={372} h={optimizedHeight} />
+      <Image path={item.media} w={372} h={optimizedHeight} />
       <Link to={`/pin/${item._id}`} className="overlay"></Link>
       <button className="saveButton">Save</button>
       <div className="overlayIcons">
